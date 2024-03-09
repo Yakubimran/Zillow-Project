@@ -99,6 +99,9 @@ def store_in_snowflake(**kwargs):
         print("Data inserted successfully into Snowflake table.")
     except Exception as e:
         raise AirflowFailException("Error inserting data into Snowflake table:", str(e))
+    else:
+        # delete the data file downloaded in tmp folder
+        os.remove(file_path)
 
 default_args = {
     'owner': 'Yakubimran',

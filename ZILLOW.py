@@ -23,6 +23,7 @@ def fetch_zillow_data():
         print('Response data:', data)  # Print the entire response data for debugging
         df = pandas.json_normalize(json.loads(data))
         # Store into a local file
+        file_path:"/opt/airflow/dags/data.csv"
         df.to_csv(file_path, index=False)
     except requests.exceptions.HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')
